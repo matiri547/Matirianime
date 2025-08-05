@@ -1,0 +1,133 @@
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+
+from reportlab.lib.pagesizes import A4
+
+from reportlab.lib.styles import getSampleStyleSheet
+
+
+
+# Données des animés similaires à Darwin's Game en VF
+
+animes_similaires = [
+
+    {
+
+        "titre": "Mirai Nikki (Future Diary)",
+
+        "description": "Un survival game mortel où les participants possèdent des journaux prédictifs. Tension, stratégie et trahisons garanties.",
+
+    },
+
+    {
+
+        "titre": "Btooom!",
+
+        "description": "Un jeu vidéo devient réel : des joueurs se battent avec des bombes sur une île. Mélange explosif d'action et de survie.",
+
+    },
+
+    {
+
+        "titre": "Deadman Wonderland",
+
+        "description": "Des prisonniers dotés de pouvoirs sanguins s’affrontent dans un parc carcéral sordide. Gore, action et conspiration.",
+
+    },
+
+    {
+
+        "titre": "Danganronpa: The Animation",
+
+        "description": "Des lycéens piégés doivent tuer pour s'échapper, mais sans se faire attraper. Enquête, procès et manipulation psychologique.",
+
+    },
+
+    {
+
+        "titre": "Tomodachi Game",
+
+        "description": "Un jeu d'argent met à l’épreuve l’amitié d’un groupe d’élèves. Manipulations mentales et dilemmes moraux.",
+
+    },
+
+    {
+
+        "titre": "Ousama Game (King’s Game)",
+
+        "description": "Une classe entière reçoit des ordres mortels d’un mystérieux “Roi”. Refusez, et vous mourrez.",
+
+    },
+
+    {
+
+        "titre": "Gantz",
+
+        "description": "Des morts sont ressuscités pour participer à un jeu de chasse aux extraterrestres. Violent, sombre et dérangeant.",
+
+    },
+
+    {
+
+        "titre": "Juuni Taisen: Zodiac War",
+
+        "description": "12 guerriers représentant les signes du zodiaque se battent à mort pour exaucer un vœu. Combat stratégique et sanglant.",
+
+    },
+
+    {
+
+        "titre": "No Game No Life",
+
+        "description": "Deux génies sont transportés dans un monde où tout se règle par des jeux. Moins sanglant, mais hautement stratégique.",
+
+    },
+
+    {
+
+        "titre": "Alice in Borderland",
+
+        "description": "Des jeunes sont piégés dans un Tokyo alternatif et doivent jouer à des jeux mortels pour survivre. Énigmes, survie et suspense.",
+
+    },
+
+]
+
+
+
+# Création du document PDF
+
+doc = SimpleDocTemplate("/mnt/data/Anime_similaires_Darwins_Game_VF.pdf", pagesize=A4)
+
+styles = getSampleStyleSheet()
+
+story = []
+
+
+
+# Titre principal
+
+story.append(Paragraph("🎮 Animés Similaires à Darwin's Game (VF)", styles["Title"]))
+
+story.append(Spacer(1, 12))
+
+
+
+# Ajout des animés à la fiche
+
+for anime in animes_similaires:
+
+    story.append(Paragraph(f"📌 <b>{anime['titre']}</b>", styles["Heading3"]))
+
+    story.append(Paragraph(anime["description"], styles["BodyText"]))
+
+    story.append(Spacer(1, 12))
+
+
+
+# Génération du PDF
+
+doc.build(story)
+
+
+
+"/mnt/data/Anime_similaires_Darwins_Game_VF.pdf"
